@@ -1,0 +1,33 @@
+__author__ = 'Nick'
+
+import random
+import matplotlib.pyplot as plt
+
+''' The Random_Walk model.
+This class outlines the random walk methodology where an agent's path is dictated by the generation of a
+random number between 1 and 4, which subsequently determines the direction of their step taken.
+'''
+
+class Random_Walk:
+    def random_walk(length): # Opens 'random_walk' function block.
+        x, y = 0, 0 # Starting co-ordinates.
+        step_x, step_y = [x], [y] # Defining x y co-ordinates.
+        for i in range(length): # Opens the 'for' counting loop.
+            number = random.randint(1, 4) # Generates random number between 1 and 4; determining direction of step taken.
+            if number == 1:
+                x += 1
+            elif number == 2:
+                y += 1
+            elif number == 3:
+                x += -1
+            else:
+                y += -1
+            step_x.append(x)# Updates x co-ordinate.
+            step_y.append(y)# Update y co-ordinate.
+        return [step_x, step_y] # Returns co-ordinate locations.
+
+    walk = random_walk(250) # Sets the number of iterations.
+    print(walk)
+    plt.plot(walk[0], walk[1])
+    plt.axis([-50, 50, -50, 50]) # Sets the size of the map plot.
+    plt.show() # Displays the plot.
